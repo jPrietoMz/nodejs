@@ -3,7 +3,7 @@ var servidor = require('http');
 servidor.createServer(function(req,res){
     res.writeHead(200,{'Content-Type':'text/html'});
     res.write("<h1>Hola mundo desde Node.js</h1>");
-    switch(req.url){
+    switch(req.url){ //DE LA PARTE 6 A 18 se conoce como ENRRUTADOR
         case "/":
             res.end("Estás en la página principal");
             break;

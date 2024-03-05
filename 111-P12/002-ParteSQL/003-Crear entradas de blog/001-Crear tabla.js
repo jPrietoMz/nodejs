@@ -12,14 +12,15 @@ conexion.connect(function(err){
     if(err) throw err;
     console.log("conectado")
     conexion.query(`
-        INSERT INTO entradas VALUES(
-            NULL,
-            'Golden State Warriors',
-            'GSW',
-            'San Francisco'
+        CREATE TABLE entradas 
+        ( 
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            Equipo VARCHAR(255),
+            Alias TEXT,
+            Ciudad VARCHAR(255)
         )
     `,function(err,result){
         if(err) throw err;
-        console.log("Se ha insertado el registro")
+        console.log("Se ha creado la tabla")
     })
 })

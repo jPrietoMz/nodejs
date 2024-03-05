@@ -6,9 +6,9 @@ var mysql = require('mysql')
 
 var conexion = mysql.createConnection({
                 host:"localhost",
-                user:"nodejs7",
-                password:"nodejs7",
-                database:"nodejs7"
+                user:"JoseNBA1",
+                password:"JoseNBA1",
+                database:"nba_p12"
             });
 
 servidor.createServer(function(req,res){

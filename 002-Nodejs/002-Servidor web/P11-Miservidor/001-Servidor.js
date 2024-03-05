@@ -1,55 +1,73 @@
-var servidor = require('http');
-var archivos = require('fs');
-var url = require('url');
-var qs = require('querystring');
+const http = require('http');
+const url = require('url');
+const fs = require('fs');
+const mysql = require('mysql');
 
-servidor.createServer(function(req,res){
-    if(req.method === 'POST' && req.url === '/guardar-mensaje') {
-        var body = '';
-        req.on('data', function(data) {
-            body += data;
-        });
-        req.on('end', function() {
-            var formData = qs.parse(body);
-            var mensaje = `Nombre: ${formData.nombre}\nCorreo electrónico: ${formData.email}\nMensaje: ${formData.mensaje}\n\n`;
+// Configuración de la conexión a la base de datos
+const conexion = mysql.createConnection({
+    host: "localhost",
+    user: "JoseNBA1",
+    password: "JoseNBA1",
+    database: "nba_p12"
+});
 
-            archivos.appendFile('mensajes.txt', mensaje, function(err) {
-                if (err) throw err;
-                console.log('Mensaje guardado con éxito!');
+// Conexión a la base de datos
+conexion.connect(function(err) {
+    if (err) throw err;
+    console.log("Conectado a la base de datos MySQL");
+});
+
+const servidor = http.createServer(function(req, res) {
+    // Parsear la URL
+    const ruta = url.parse(req.url, true);
+
+    // Manejar las rutas
+    switch (ruta.pathname) {
+        case "/":
+            enviarArchivo('inicio.html', res);
+            break;
+        case "/equipos":
+            // Realizar consulta a la base de datos para obtener los equipos
+            conexion.query('SELECT * FROM entradas', function(err, resultados, campos) {
+                if (err) {
+                    res.writeHead(500, {'Content-Type': 'text/plain'});
+                    res.end('Error interno del servidor');
+                    throw err;
+                }
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.write('<h1>Equipos NBA</h1>');
+                res.write('<ul>');
+                resultados.forEach(function(equipo) {
+                    res.write('<li>' + equipo.Equipo + ' (' + equipo.Alias + ') - ' + equipo.Ciudad + '</li>');
+                });
+                res.write('</ul>');
+                res.end();
             });
-
-            res.writeHead(302, {'Location': '/gracias.html'});
-            res.end();
-        });
-    } else {
-        res.writeHead(200, {'Content-Type':'text/html'});
-   
-        switch(req.url) {
-            case "/":
-                archivos.readFile('inicio.html',function(err, data){
-                    res.write(data)
-                    res.end("")
-                });
-                break;
-            case "/sobremi":
-                archivos.readFile('sobremi.html',function(err, data){
-                    res.write(data)
-                    res.end("")
-                });
-                break;
-            case "/contacto":
-                archivos.readFile('contacto.html',function(err, data){
-                    res.write(data)
-                    res.end("")
-                });
-            case "/gracias.html":
-                archivos.readFile('gracias.html',function(err, data){
-                    res.write(data)
-                    res.end("")
-                });
-                break;
-            default:
-                res.end("Página no encontrada");
-        }
+            break;
+        case "/sobremi":
+            enviarArchivo('sobremi.html', res);
+            break;
+        default:
+            res.writeHead(404, {'Content-Type': 'text/plain'});
+            res.end('Página no encontrada');
     }
-}).listen(8080);
+});
+
+const puerto = 8080;
+servidor.listen(puerto, function() {
+    console.log(`Servidor escuchando en el puerto ${puerto}`);
+});
+
+function enviarArchivo(nombreArchivo, res) {
+    const rutaArchivo = path.join(__dirname, nombreArchivo);
+    fs.readFile(rutaArchivo, function(err, data) {
+        if (err) {
+            res.writeHead(500, {'Content-Type': 'text/plain'});
+            res.end('Error interno del servidor');
+            throw err;
+        }
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        res.end();
+    });
+}

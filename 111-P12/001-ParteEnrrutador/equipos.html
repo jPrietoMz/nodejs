@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos NBA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Equipos NBA</h1>
+        <ul id="equipos-list">
+            <!-- Aquí se llenarán dinámicamente los equipos desde JavaScript -->
+        </ul>
+    </div>
+
+    <script>
+        // Este script se encargará de llenar la lista de equipos desde la base de datos
+        // Puedes utilizar AJAX o fetch para obtener los datos desde el servidor
+
+        // Aquí un ejemplo de cómo se llenaría la lista (deberías adaptarlo a tu entorno y datos)
+        // La estructura de los datos debería ser similar a:
+        // [{ Equipo: 'Nombre del equipo', Alias: 'Alias del equipo', Ciudad: 'Ciudad del equipo' }, ...]
+        var equipos = [
+            { Equipo: 'Los Angeles Lakers', Alias: 'LAL', Ciudad: 'Los Angeles' },
+            { Equipo: 'Boston Celtics', Alias: 'BOS', Ciudad: 'Boston' },
+            { Equipo: 'New York Knicks', Alias: 'NYK', Ciudad: 'Nueva York' },
+            { Equipo: 'Chicago Bulls', Alias: 'CHI', Ciudad: 'Chicago' },
+            { Equipo: 'Golden State Warriors', Alias: 'GSW', Ciudad: 'San Francisco' }
+            // Agrega más equipos según sea necesario
+        ];
+
+        var equiposList = document.getElementById('equipos-list');
+        equipos.forEach(function(equipo) {
+            var listItem = document.createElement('li');
+            listItem.textContent = equipo.Equipo + ' (' + equipo.Alias + ') - ' + equipo.Ciudad;
+            equiposList.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>

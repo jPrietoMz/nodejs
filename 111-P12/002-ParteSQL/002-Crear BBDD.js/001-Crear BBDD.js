@@ -3,14 +3,14 @@ var mysql = require('mysql')
 
 var conexion = mysql.createConnection({
     host:"localhost",
-    user:"json15",
-    password:"json15"
+    user:"JoseNBA1",
+    password:"JoseNBA1"
 });
 
 conexion.connect(function(err){
     if(err) throw err;
     console.log("conectado")
-    conexion.query('CREATE DATABASE json15', function(err,result){
+    conexion.query('CREATE DATABASE NBA_p12', function(err,result){
         if (err) throw err;
         console.log("Se ha creado la base de datos")
     })

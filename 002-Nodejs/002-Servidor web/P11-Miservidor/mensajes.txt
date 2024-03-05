@@ -1,0 +1,4 @@
+Nombre: Jose
+Correo electrónico: jose@ficticio.es
+Mensaje: Esto es una prueba
+

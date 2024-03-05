@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <title>Mi página personal - Contacto</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; /* Color de fondo sepia claro */
+        }
+        header {
+            background-color: #5c3e1e; /* Marrón oscuro */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #d9b48f; /* Marrón claro */
+            overflow: hidden;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: #5c3e1e; /* Marrón oscuro */
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: #bbaa99; /* Marrón medio */
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #5c3e1e; /* Marrón oscuro */
+        }
+        p {
+            margin: 20px auto;
+            width: 60%;
+            line-height: 1.6;
+            color: #5c3e1e; /* Marrón oscuro */
+        }
+        footer {
+            background-color: #5c3e1e; /* Marrón oscuro */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mi página personal - Contacto</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/sobremi">Sobre Mí</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h1>Contacto</h1>
+        <p>¡Hola! Si deseas ponerte en contacto conmigo, por favor utiliza el formulario a continuación o envíame un correo electrónico a [tu correo electrónico]. Estaré encantado/a de escucharte.</p>
+        <form action="/guardar-mensaje" method="post">
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+            <label for="email">Correo electrónico:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="mensaje">Mensaje:</label><br>
+            <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+    <footer>
+        <p>Derechos de autor &copy; 2024 | Diseñado por [Tu nombre]</p>
+    </footer>
+</body>
+</html>

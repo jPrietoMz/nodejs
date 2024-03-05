@@ -10,4 +10,8 @@ var conexion = mysql.createConnection({
 conexion.connect(function(err){
     if(err) throw err;
     console.log("conectado")
+    conexion.query('CREATE DATABASE json15', function(err,result){
+        if (err) throw err;
+        console.log("Se ha creado la base de datos")
+    })
 })

@@ -13,7 +13,7 @@ const formularioSchema = new mongoose.Schema({
 const Formulario = mongoose.model("Formulario",formularioSchema)
 
 const NuevoFormulario = new Formulario({
-    nombre:"Jose Vicente",
+    nombre:"Jose Manuel",
     asunto:"Este es un mensaje desde node",
     mensaje:"Este es el cuerpo del mensaje",
     fecha:"2023-08-15"

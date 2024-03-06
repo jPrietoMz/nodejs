@@ -1,0 +1,1 @@
+db.pokemon.deleteOne({tipo:"Eléctrico"});

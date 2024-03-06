@@ -1,0 +1,1 @@
+db.pokemon.updateMany({},{$set:{Naturaleza:"Alegre"}});

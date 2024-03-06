@@ -1,0 +1,1 @@
+db.pokemon.deleteMany({tipo:"Fuego"});

@@ -1,1 +1,1 @@
-db.formularios.deleteMany({nombre:"Jose Vicente"});
+db.formularios.deleteMany({nombre:"Jose Manuel"});

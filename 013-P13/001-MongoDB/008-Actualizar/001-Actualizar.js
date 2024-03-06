@@ -1,0 +1,1 @@
+db.pokemon.updateOne({tipo:"Fuego"},{$set:{Naturaleza:"Cauta"}});

@@ -51,15 +51,26 @@ servidor.createServer(function(req,res){
             break;
         case "/procesa":
             let datos = '';
-               req.on('data',parte=>{
-                   datos += parte.toString();
-               })
-               req.on('end',()=>{
-                   var cadena = datos
-                   var procesado = procesador.parse(cadena)
-                   console.log(procesado)
-               })
-            
+            req.on('data', parte => {
+                datos += parte.toString();
+            });
+            req.on('end', () => {
+                var cadena = datos;
+                var procesado = procesador.parse(cadena);
+                console.log(procesado);
+
+                // Insertar los datos en la tabla 'entradas'
+                var query = "INSERT INTO entradas (Equipo, Alias, Ciudad) VALUES (?, ?, ?)";
+                conexion.query(query, [procesado.Equipo, procesado.Alias, procesado.Ciudad], function(err, result) {
+                    if (err) {
+                        console.error("Error al insertar datos: " + err.message);
+                        res.end("Error al insertar datos en la base de datos");
+                    } else {
+                        console.log("Datos insertados correctamente");
+                        res.end("Datos insertados correctamente");
+                    }
+                });
+            });
             break;
         default:
             res.end("Página no encontrada");

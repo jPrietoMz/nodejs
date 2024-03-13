@@ -1,0 +1,1 @@
+db.dragonball.updateOne({origen:"Tierra"},{$set:{raza:"Humano"}});

@@ -1,0 +1,1 @@
+db.dragonball.deleteMany({personaje:"Gohan"});

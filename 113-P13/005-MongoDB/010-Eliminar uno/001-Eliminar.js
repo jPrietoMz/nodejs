@@ -1,0 +1,1 @@
+db.dragonball.deleteOne({personaje:"Goku"});

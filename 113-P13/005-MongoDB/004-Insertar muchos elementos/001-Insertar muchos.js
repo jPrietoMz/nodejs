@@ -1,0 +1,22 @@
+db.dragonball.insertMany([
+    {
+    personaje:"Vegeta",
+    raza:"Saiyan",
+    origen:"Planeta Vegeta"
+},
+    {
+    personaje:"Gohan",
+    raza:"Saiyan",
+    origen:"Tierra"
+},
+    {
+    personaje:"Piccolo",
+    raza:"Namekiano",
+    origen:"Namek"
+},
+    {
+   personaje:"Gohan",
+    raza:"Saiyan",
+    origen:"Tierra"
+}
+]);
